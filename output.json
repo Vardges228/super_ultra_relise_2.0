@@ -1,0 +1,96 @@
+{
+    "Spawned": [
+        {
+            "name": "Grass",
+            "number": "429"
+        },
+        {
+            "name": "Grass Eater",
+            "number": "0"
+        },
+        {
+            "name": "Predator",
+            "number": "0"
+        },
+        {
+            "name": "Virus",
+            "number": "0"
+        }
+    ],
+
+    "Spawned": [
+        {
+            "name": "Grass",
+            "number": "213"
+        },
+        {
+            "name": "Grass Eater",
+            "number": "0"
+        },
+        {
+            "name": "Predator",
+            "number": "0"
+        },
+        {
+            "name": "Virus",
+            "number": "2"
+        }
+    ],
+
+    "Spawned": [
+        {
+            "name": "Grass",
+            "number": "321"
+        },
+        {
+            "name": "Grass Eater",
+            "number": "90"
+        },
+        {
+            "name": "Predator",
+            "number": "0"
+        },
+        {
+            "name": "Virus",
+            "number": "71"
+        }
+    ],
+
+    "Spawned": [
+        {
+            "name": "Grass",
+            "number": "627"
+        },
+        {
+            "name": "Grass Eater",
+            "number": "0"
+        },
+        {
+            "name": "Predator",
+            "number": "0"
+        },
+        {
+            "name": "Virus",
+            "number": "595"
+        }
+    ],
+
+    "Spawned": [
+        {
+            "name": "Grass",
+            "number": "26"
+        },
+        {
+            "name": "Grass Eater",
+            "number": "0"
+        },
+        {
+            "name": "Predator",
+            "number": "9"
+        },
+        {
+            "name": "Virus",
+            "number": "2"
+        }
+    ]
+}{"Spawned":[{"name":"Grass","number":"615"},{"name":"Grass Eater","number":"0"},{"name":"Predator","number":"0"},{"name":"Virus","number":"60"}]}{"Spawned":[{"name":"Grass","number":"263"},{"name":"Grass Eater","number":"11"},{"name":"Predator","number":"7"},{"name":"Virus","number":"1"}]}

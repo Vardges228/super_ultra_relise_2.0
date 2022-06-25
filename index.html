@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!--   բոլոր սկրիպտի կապերը ջնջում ենք և թողնում միայն այս երեքը, 
+    չմոռանաս, որ առաջինը սոքեթն ենք կապում -->
+  <script src="socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    table.greyGridTable {
+      font-family: Arial, Helvetica, sans-serif;
+      border: 1px solid #1C6EA4;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      border-collapse: collapse;
+    }
+
+    table.greyGridTable td,
+    table.greyGridTable th {
+      border: 1px solid #AAAAAA;
+      padding: 3px 2px;
+    }
+
+    table.greyGridTable tbody td {
+      font-size: 13px;
+    }
+
+    table.greyGridTable td:nth-child(even) {
+      background: #D0E4F5;
+    }
+
+    table.greyGridTable thead {
+      background: #1C6EA4;
+      border-bottom: 2px solid #444444;
+    }
+
+    table.greyGridTable thead th {
+      font-size: 15px;
+      font-weight: bold;
+      color: #FFFFFF;
+      text-align: center;
+      border-left: 2px solid #D0E4F5;
+    }
+
+    table.greyGridTable thead th:first-child {
+      border-left: none;
+    }
+    .right{
+      opacity: 0.9;
+      width: 50%;
+      height: 100%;
+      background-color: snow;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px blue;
+    }
+
+    table.greyGridTable tfoot {
+      font-size: 14px;
+      font-weight: bold;
+      color: #FFFFFF;
+      border-top: 2px solid #444444;
+    }
+
+    table.greyGridTable tfoot td {
+      font-size: 14px;
+    }
+
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    header {
+      height: 5%;
+      opacity: 0.3;
+      background-color: snow;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+
+    }
+
+    a {
+      color: gray;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 20px;
+      padding: 0px 10px;
+      text-decoration: none;
+      /* transition: all 300ms; */
+    }
+
+    a:hover {
+      color: rgb(53, 49, 49);
+      font-size: 24px;
+    }
+
+    #Bord-a {
+      border-left: 1px solid gray;
+      border-right: 1px solid gray;
+    }
+
+    .main {
+      margin: 40px 10px;
+      height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .left {
+      height: 100%;
+      width: 50%;
+    }
+
+    button {
+      height: 8%;
+      padding: 10px 0px;
+      width: 690px;
+      border-radius: 5px;
+      border: 0px;
+      margin: 12px 10px;
+      color: snow;
+      /* transition: all 300ms; */
+      font-size: x-large;
+      font-weight: bolder;
+    }
+
+    #Grass-btn {
+      background: linear-gradient(120deg, #A8FF78, #78FFD6);
+    }
+
+    #GrassEt-btn {
+      background: linear-gradient(120deg, #FFFC00, #FFFFFF);
+      color: gray;
+    }
+
+    #Predator-btn {
+      background: linear-gradient(120deg, #C31432, #240B36);
+    }
+
+    #Virus-btn {
+      background: linear-gradient(120deg, #A8FF78, #A8FF78, #78FFD6);
+      color: gray;
+    }
+    #Virus-btn {
+      background: linear-gradient(120deg, #A8FF78, #A8FF78, #78FFD6);
+      color: gray;
+    }
+    #Clear-btn {
+      background: linear-gradient(120deg, Red , rgb(31, 0, 7));
+    }
+
+    button:hover {
+      opacity: 0.4;
+    }
+
+    canvas {
+      border: 1px solid black;
+      border-radius: 5px;
+      margin: 12px 10px;
+    }
+    #no-div-dive{
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body style="background: none;" id="body">
+  <header class="header">
+    <a href="./index.html">Home</a>
+    <a id="Bord-a" href="https://tumo.org/" target="_blank">Tumo</a>
+    <a href="#">About</a>
+  </header>
+  <div class="main">
+    <div class="left">
+      <div id="no-div-dive">
+        <button id="Grass-btn">Add Grass</button>
+        <button id="GrassEt-btn">Add GrassEater</button>
+        <button id="Predator-btn">Add Predator</button>
+        <button id="Virus-btn">Add virus</button>
+        <button id="Clear-btn">Clear Matrix</button>
+      </div>
+      <div id="canvasParent"></div>
+    </div>
+    <div class="right">
+      <table class="greyGridTable" style="height: 100%;" width="100%">
+        <thead>
+          <tr>
+            <th>Charactiristics</th>
+            <th>Grass</th>
+            <th>GrassEater</th>
+            <th>Predator</th>
+            <th>Goblin</th>
+            <th>Virus</th>
+          </tr>
+        </thead>
+        <tfoot>
+       
+        </tfoot>
+        <tbody>
+          <tr>
+            <td>Color</td>
+            <td>Green, White</td>
+            <td>Yellow</td>
+            <td>Red</td>
+            <td>Blue</td>
+            <td>LightGreen</td>
+          </tr>
+          <tr>
+            <td>Energy</td>
+            <td>N/A</td>
+            <td>8</td>
+            <td>18</td>
+            <td>N/A</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Power</td>
+            <td>N/A</td>
+            <td>N/A</td>
+            <td>N/A</td>
+            <td>Adding characters</td>
+            <td>poison grass</td>
+          </tr>
+          <tr>
+            <td>Vulnerability</td>
+            <td>&nbsp;GrassEater</td>
+            <td>Predator,Virus&nbsp;</td>
+            <td>N/A</td>
+            <td>N/A</td>
+            <td>N/A</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
